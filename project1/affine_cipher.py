@@ -3,16 +3,16 @@ def encode(message, subst):
   return "".join(subst.get(x, x) for x in message)
 
 def create_affine_cipher(a, b):
-    encodings = {}
+    encoding = {}
     decoding = {}
     alphabet_size = len(string.ascii_uppercase)
     for i in range(alphabet_size):
         letter = string.ascii_uppercase[i]
         subst_letter = string.ascii_uppercase[(i*a + b) % alphabet_size]
 
-        encodings[letter] = subst_letter
+        encoding[letter] = subst_letter
         decoding[subst_letter] = letter
-    return encodings, decoding
+    return encoding, decoding
 
 def encode_cmp(message, subst):
     cipher = ""
