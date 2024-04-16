@@ -14,6 +14,13 @@ import string
 def encode(message, subst):
   return "".join(subst.get(x, x) for x in message)
 
+# This function takes a message and a substitution dictionary and returns
+# the decoded message
+#  - message: the message to decode
+#  - subst: the substitution dictionary
+# return: the decoded message
+def decode(message, subst):
+    return encode(message, subst)
 
 # This function creates an affine cipher
 #  - a: the first coefficient of the affine cipher
@@ -58,5 +65,8 @@ test_message = "TEST_MESSAGE"
 subst, unsubst = create_affine_cipher(10, 2)
 if encode_cmp(test_message, subst) == encode(test_message, subst):
     print("[PASS]")
+    print("Encode: ", subst, "\n","Decode: ", unsubst)
+    print("Raw text:", test_message, "->","Encoded message:", encode(test_message, subst)
+          ,"->","Decoded message: ", decode(encode(test_message, subst), unsubst))
 else:
     print("[FAIL]")
