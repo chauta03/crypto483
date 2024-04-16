@@ -1,8 +1,8 @@
-# Goal: instead of shifting the alphabet, we randomly jumbled the letters
-
 import string
 import random
 
+# Create a jumbled cipher
+# return: the encoding and decoding dictionaries
 def create_jumbled_cipher():
     encoding = {}
     decoding = {}
@@ -14,12 +14,22 @@ def create_jumbled_cipher():
         decoding[jumbled_alphabet[i]] = alphabet[i]
     return encoding, decoding
 
+# This function takes a message and a substitution dictionary and returns
+# the encoded message
 def encode(message, subst):
     return "".join(subst.get(x, x) for x in message)
 
+# This function takes a message and a substitution dictionary and returns
+# the decoded message
 def decode(message, subst):
     return encode(message, subst)
 
+# This function compares the message with the encoded message
+# the encoded message
+#  - message: the message to encode
+#  - subst: the substitution dictionary
+# print("[PASS]") if the encoded message is the same as the message
+# print("[FAIL]") otherwise
 def encode_cmp(message, subst):
     cipher = ""
     for letter in message:
